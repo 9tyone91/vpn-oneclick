@@ -161,9 +161,9 @@ get_pbk() {
 }
 
 get_short_id() {
-    # REALITY shortId: 偶数字节 hex, 最长 16 字符
-    is_short_id=$(openssl rand -hex 4 2>/dev/null)
-    [[ ! $is_short_id ]] && is_short_id=$(head -c4 /dev/urandom | od -An -tx1 | tr -d ' \n')
+    # REALITY shortId: 8 字节 / 16 个 hex 字符 (兼容 Shadowrocket 等客户端)
+    is_short_id=$(openssl rand -hex 8 2>/dev/null)
+    [[ ! $is_short_id ]] && is_short_id=$(head -c8 /dev/urandom | od -An -tx1 | tr -d ' \n')
 }
 
 show_list() {
@@ -1387,7 +1387,7 @@ get() {
             [[ ! $is_servername ]] && is_servername=$is_random_servername
             [[ ! $is_private_key ]] && get_pbk
             [[ ! $is_short_id ]] && get_short_id
-            is_stream='streamSettings:{network:"tcp",security:"reality",realitySettings:{dest:'\"${is_servername}\:443\"',serverNames:['\"${is_servername}\"',""],publicKey:'\"$is_public_key\"',privateKey:'\"$is_private_key\"',shortIds:['\"$is_short_id\"']}}'
+            is_stream='streamSettings:{network:"tcp",security:"reality",realitySettings:{dest:'\"${is_servername}\:443\"',serverNames:['\"${is_servername}\"',""],publicKey:'\"$is_public_key\"',privateKey:'\"$is_private_key\"',shortIds:['\"$is_short_id\"'],minClientVer:"1.0.0"}}'
             if [[ $is_client ]]; then
                 is_stream='streamSettings:{network:"tcp",security:"reality",realitySettings:{serverName:'\"${is_servername}\"',"fingerprint": "ios",publicKey:'\"$is_public_key\"',"shortId": "'$is_short_id'","spiderX": "/"}}'
             fi
