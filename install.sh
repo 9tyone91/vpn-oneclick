@@ -1,7 +1,7 @@
 #!/bin/bash
 
 author=9tyone91
-# github=https://github.com/9tyone91/oneclick
+# github=https://github.com/9tyone91/vpn-oneclick
 
 # bash fonts colors
 red='\e[31m'
@@ -84,7 +84,7 @@ set_core_vars() {
     is_log_dir=/var/log/$is_core
     is_sh_bin=/usr/local/bin/$is_core
     is_sh_dir=$is_core_dir/sh
-    is_sh_repo=9tyone91/oneclick
+    is_sh_repo=9tyone91/vpn-oneclick
     is_pkg="wget unzip"
     is_config_json=$is_core_dir/config.json
 }
