@@ -80,6 +80,7 @@ info_list=(
     "指纹 (Fingerprint)"
     "公钥 (Public key)"
     "用户名 (Username)"
+    "短ID (shortId)"
 )
 change_list=(
     "更改协议"
@@ -1564,8 +1565,8 @@ info() {
     reality)
         is_color=41
         is_can_change=(0 1 5 10 11)
-        is_info_show=(0 1 2 3 15 8 16 17 18)
-        is_info_str=($is_protocol $is_addr $port $uuid xtls-rprx-vision reality $is_servername "ios" $is_public_key)
+        is_info_show=(0 1 2 3 15 8 16 17 18 20)
+        is_info_str=($is_protocol $is_addr $port $uuid xtls-rprx-vision reality $is_servername "ios" $is_public_key $is_short_id)
         is_url="$is_protocol://$uuid@$is_addr:$port?encryption=none&security=reality&flow=xtls-rprx-vision&type=tcp&sni=$is_servername&pbk=$is_public_key&sid=$is_short_id&fp=ios#9tyone91-$net-$is_addr"
         ;;
     door)
