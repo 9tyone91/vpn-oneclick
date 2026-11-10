@@ -1,0 +1,7 @@
+#!/bin/bash
+
+is_core=v2ray
+args=$@
+is_sh_ver=v4.27
+
+. /etc/v2ray/sh/src/init.sh
